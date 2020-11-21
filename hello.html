@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+  <script src='./jquery.min2.1.4.js'></script>
+</head>
+<body>
+  <div id="app">
+    {{message}}
+    <div v-if="seen">我是被看到的了元素</div>
+    <div v-for="item in todos">{{item.text}}</div>
+    <p @click="clickMe">{{myMessage}}</p>
+  </div>
+</body>
+</html>
+<script>
+  var app = new Vue({
+    el:  "#app",
+    data: {
+      message: "hello world!",
+      seen: true,
+      myMessage: "我是即将 被翻转的字符串",
+      todos: [
+        {
+          text: 1
+        },
+        {
+          text: 2
+        },
+        {
+          text: 3
+        },{
+          text: 4
+        }
+      ]
+    },
+    methods: {
+      clickMe:  function()  {
+        this.myMessage = this.myMessage.split("").reverse().join("")
+      }
+    }
+  })
+</script>
